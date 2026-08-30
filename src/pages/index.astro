@@ -1,0 +1,566 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Footer from "../components/Footer.astro";
+import watermark from "../assets/broadgate-symbol-ink.png";
+import {
+  site,
+  intro,
+  facts,
+  offerings,
+  approach,
+  network,
+  networkMode,
+  leadership,
+} from "../data/site";
+---
+
+<Base>
+  <SiteHeader />
+  <main id="main">
+    <!-- Introduction -->
+    <section class="section intro" id="introduction">
+      <Image class="hero__watermark" src={watermark} alt="" widths={[360, 560]} sizes="480px" aria-hidden="true" />
+      <div class="container intro__inner">
+        <p class="eyebrow">Introduction</p>
+        <h2>The gateway to expertise for finance and asset management</h2>
+        <p class="intro__lede">{intro}</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">Start a conversation</a>
+          <a class="btn btn--ghost" href="#offerings">See how we work</a>
+        </div>
+        <dl class="hero__facts">
+          {
+            facts.map((f) => (
+              <div>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    <!-- Offerings -->
+    <section class="section" id="offerings">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">What we do</p>
+          <h2>Three connected offerings, one front door</h2>
+          <p class="lede">
+            Broadgate is the gateway to expertise for the finance and
+            asset-management industry — an introducer and enabler, never a body shop.
+          </p>
+        </header>
+
+        <div class="cards">
+          {
+            offerings.map((o, i) => (
+              <article class="card">
+                <span class="card__index">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{o.title}</h3>
+                <p>{o.summary}</p>
+                <ul>
+                  {o.points.map((p) => <li>{p}</li>)}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="section approach" id="approach">
+      <div class="container approach__grid">
+        <header class="section-head">
+          <p class="eyebrow">Our approach</p>
+          <h2>Boutique agility with institutional-grade governance</h2>
+          <p class="lede">
+            Underpinning all three offerings is a professionally engineered supply
+            framework, so clients get responsiveness without governance risk.
+          </p>
+        </header>
+        <ul class="approach__list">
+          {
+            approach.map((a) => (
+              <li>
+                <h3>{a.title}</h3>
+                <p>{a.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- Network -->
+    {
+      networkMode !== "hidden" && (
+        <section class="section network" id="network">
+          <div class="container">
+            <header class="section-head">
+              <p class="eyebrow">The gateway network</p>
+              <h2>{network.heading}</h2>
+              <p class="lede">
+                {network.intro}
+                {networkMode === "full" && ` ${network.sampleNote}`}
+              </p>
+            </header>
+
+            {networkMode === "full" ? (
+              <ul class="partners">
+                {network.partners.map((p) => {
+                  const url = "url" in p ? (p.url as string) : undefined;
+                  const Tag = url ? "a" : "div";
+                  return (
+                    <li class="partner">
+                      <Tag
+                        class="partner__card"
+                        {...(url ? { href: url, rel: "noopener", target: "_blank" } : {})}
+                      >
+                        <span class="partner__name">
+                          {p.name}
+                          {url && (
+                            <span class="partner__ext" aria-hidden="true">
+                              &#8599;
+                            </span>
+                          )}
+                        </span>
+                        <span class="partner__role">{p.role}</span>
+                      </Tag>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p class="network__note">{network.teaserNote}</p>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Leadership -->
+    <section class="section leadership" id="leadership">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Leadership</p>
+          <h2>Three directors, hands-on in delivery</h2>
+          <p class="lede">
+            Broadgate is led by a small team of dedicated directors who remain
+            personally involved in client engagements.
+          </p>
+        </header>
+        <ul class="people">
+          {
+            leadership.map((person) => (
+              <li class="person">
+                <span class="person__initials" aria-hidden="true">
+                  {person.name.split(" ").map((n) => n[0]).join("")}
+                </span>
+                <div>
+                  <h3>{person.name}</h3>
+                  <p>{person.role}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container contact__inner">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Tell us what you're trying to get done</h2>
+          <p class="lede">
+            Whether you need a senior pair of hands, an introduction to a
+            specialist, or a route into the UK market — start with a conversation.
+          </p>
+        </div>
+        <div class="contact__actions">
+          <a class="btn btn--primary" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
+          <a class="btn btn--ghost btn--on-navy" href={site.linkedin} rel="noopener">
+            Connect on LinkedIn
+          </a>
+          <p class="contact__meta">{site.location}</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .section-head {
+    max-width: 46rem;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .section-head .eyebrow {
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+
+  .section-head h2 {
+    margin-bottom: 1rem;
+  }
+
+  /* Introduction */
+  .intro {
+    position: relative;
+    overflow: hidden;
+    background: var(--warm-neutral);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero__watermark {
+    position: absolute;
+    right: -6%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(40vw, 440px);
+    height: auto;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  @media (max-width: 760px) {
+    .hero__watermark {
+      display: none;
+    }
+  }
+
+  .intro__inner {
+    position: relative;
+    max-width: 52rem;
+  }
+
+  .intro .eyebrow {
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+
+  .intro h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  .intro__lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    color: var(--slate);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.25rem;
+  }
+
+  .hero__facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .hero__facts dt {
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero__facts dd {
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.35;
+  }
+
+  /* Offerings */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.75rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .card__index {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: color-mix(in srgb, var(--gold) 85%, var(--ink));
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+  }
+
+  .card h3 {
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .card p {
+    color: var(--slate);
+    font-size: 0.98rem;
+  }
+
+  .card ul {
+    margin: 1.5rem 0 0;
+    padding: 1.1rem 0 0;
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .card li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.92rem;
+  }
+
+  .card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--gold);
+    border-radius: 1px;
+    transform: rotate(45deg);
+  }
+
+  /* Approach */
+  .approach {
+    background: var(--pale-blue);
+  }
+
+  .approach__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .approach .section-head {
+    margin-bottom: 0;
+  }
+
+  .approach__list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .approach__list li {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.6rem;
+    border-left: 3px solid var(--navy);
+  }
+
+  .approach__list h3 {
+    margin-bottom: 0.4rem;
+  }
+
+  .approach__list p {
+    color: var(--slate);
+    font-size: 0.98rem;
+  }
+
+  /* Network */
+  .network__note {
+    max-width: 42rem;
+    padding: 1.4rem 1.6rem;
+    border-left: 3px solid var(--gold);
+    background: var(--pale-blue);
+    border-radius: var(--radius);
+    color: var(--slate);
+    font-size: 0.98rem;
+  }
+
+  .partners {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+
+  .partner {
+    list-style: none;
+  }
+
+  .partner__card {
+    height: 100%;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    display: grid;
+    gap: 0.35rem;
+    align-content: start;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  a.partner__card:hover {
+    border-color: var(--gold);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+
+  .partner__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 1.05rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .partner__ext {
+    color: var(--gold);
+    font-size: 0.85em;
+  }
+
+  .partner__role {
+    color: var(--slate);
+    font-size: 0.88rem;
+  }
+
+  /* Leadership */
+  .people {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .person {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.6rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+  }
+
+  .person__initials {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+  }
+
+  .person h3 {
+    font-size: 1.05rem;
+  }
+
+  .person p {
+    color: var(--slate);
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--navy);
+    color: var(--white);
+    padding-block: var(--section-y);
+  }
+
+  .contact__inner {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(2rem, 6vw, 4rem);
+    align-items: center;
+  }
+
+  .contact .eyebrow {
+    color: var(--gold-soft);
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+
+  .contact h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .contact .lede {
+    color: color-mix(in srgb, var(--white) 82%, var(--navy));
+  }
+
+  .contact__actions {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+  }
+
+  .contact__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact__meta {
+    color: color-mix(in srgb, var(--white) 66%, var(--navy));
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 900px) {
+    .cards,
+    .people {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .approach__grid,
+    .contact__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .cards,
+    .partners,
+    .people,
+    .hero__facts {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__facts {
+      gap: 1.25rem;
+    }
+  }
+</style>

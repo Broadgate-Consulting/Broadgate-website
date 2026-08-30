@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import symbol from "../assets/broadgate-symbol-alpha.png";
+import { site } from "../data/site";
+
+interface Props {
+  size?: "sm" | "lg";
+  class?: string;
+}
+const { size = "sm", class: className } = Astro.props;
+---
+
+<span class:list={["lockup", `lockup--${size}`, className]}>
+  <Image class="lockup__mark" src={symbol} alt="" widths={[80, 160]} sizes="80px" />
+  <span class="lockup__text">
+    <span class="lockup__name">Broadgate</span>
+    <span class="lockup__sub">Consulting</span>
+  </span>
+  <span class="sr-only">{site.name}</span>
+</span>
+
+<style>
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .lockup__mark {
+    flex: none;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .lockup__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lockup__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+
+  .lockup__sub {
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    margin-top: 0.35em;
+  }
+
+  .lockup--sm .lockup__mark {
+    height: 34px;
+  }
+  .lockup--sm .lockup__name {
+    font-size: 1rem;
+  }
+  .lockup--sm .lockup__sub {
+    font-size: 0.58rem;
+  }
+
+  .lockup--lg .lockup__mark {
+    height: 54px;
+  }
+  .lockup--lg .lockup__name {
+    font-size: 1.6rem;
+  }
+  .lockup--lg .lockup__sub {
+    font-size: 0.72rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
