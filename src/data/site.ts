@@ -4,6 +4,7 @@ export const site = {
   companyNumber: "16998411",
   formerName: "AdeptLead2 Limited",
   slogan: "Gateway to Expertise",
+  city: "London",
   location: "London, United Kingdom",
   url: "https://www.broadgateconsulting.co.uk",
   email: "hello@broadgateconsulting.co.uk",
@@ -94,7 +95,7 @@ export const approach = [
 export const network = {
   heading: "A growing community network, with a front door built to last",
   intro:
-    "Broadgate is the gateway to a partner network of trusted, proven and world-class professionals, professional services and solutions in Financial Operations, Asset Management, Insurance and Wealth Management.",
+    "Broadgate is the gateway to a partner network of trusted, proven and world-class professional services and solutions in Financial Operations, Asset Management, Insurance and Wealth Management.",
   // shown after the intro only when networkMode is "full"
   sampleNote: "Below is a small taste.",
   // shown instead of the partner cards when networkMode is "teaser"
