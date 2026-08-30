@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
   <div class="container grid">
     <div class="identity">
       <BrandLockup size="lg" />
-      <p>{site.slogan}</p>
+      <p class="identity__tagline">{site.slogan}</p>
     </div>
 
     <nav aria-label="Footer">
@@ -46,11 +46,19 @@ const year = new Date().getFullYear();
     align-items: start;
   }
 
-  .identity p {
-    margin-top: 1.1rem;
-    color: var(--gold-soft);
+  .identity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+  }
+
+  .identity__tagline {
+    margin-top: 0.4rem;
+    color: var(--white);
     font-size: 0.95rem;
     letter-spacing: 0.02em;
+    text-align: center;
   }
 
   nav ul {
