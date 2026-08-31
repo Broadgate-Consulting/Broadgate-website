@@ -1,13 +1,15 @@
 BROADGATE CONSULTING DIGITAL ASSETS
-Issued: 30 August 2026
+Issued: 31 August 2026
 Brand: Broadgate Navy #02234F and Broadgate Gold #BF8C2A
-Slogan: Gateway to Expertise
+Slogan: Your Gateway to Expertise
+Symbol: Option C — Broad (130% width)
 
 LINKEDIN
 - Company cover: 4200 × 700 px
 - Company cover, logo-right alternative: 4200 × 700 px
 - Transparent company-cover components: approved symbol, original text lockup, and centred text lockup
 - Company logo: 400 × 400 px
+- Company logo, white-and-gold transparent version: 400 × 400 px
 - Personal profile background: 1584 × 396 px
 
 WEBSITE AND USER BACKGROUNDS

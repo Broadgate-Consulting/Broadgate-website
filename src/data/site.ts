@@ -3,7 +3,7 @@ export const site = {
   legalName: "Broadgate Consulting Limited",
   companyNumber: "16998411",
   formerName: "AdeptLead2 Limited",
-  slogan: "Gateway to Expertise",
+  slogan: "Your Gateway to Expertise",
   city: "London",
   location: "London, United Kingdom",
   url: "https://www.broadgateconsulting.co.uk",

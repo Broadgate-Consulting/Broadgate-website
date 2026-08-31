@@ -39,18 +39,24 @@ public/                Favicons, robots.txt
 src/assets/            Logo assets (see below)
 ```
 
-### Logo assets (`src/assets/`)
+### Logo assets
 
-Cropped from the official brand files in `Brand basics/` — no redrawn/approximated marks.
+Taken straight from the official brand files in `Brand basics/` — no redrawn or approximated marks.
 
-| File | What | Used by |
-| ---- | ---- | ------- |
-| `broadgate-lockup.png` | Full lockup (symbol + wordmark + slogan) on navy — cropped from the LinkedIn company cover | Banner |
-| `broadgate-symbol-alpha.png` | Gateway symbol, white/gold on transparent | BrandLockup (sticky bar, footer) |
-| `broadgate-symbol.png` | Gateway symbol on navy | spare |
-| `broadgate-symbol-ink.png` | Gateway symbol, navy/gold on transparent (= brand app-icon) | Introduction watermark |
+| File | What | Source in `Brand basics/` | Used by |
+| ---- | ---- | ------------------------- | ------- |
+| `src/assets/broadgate-lockup.png` | Full lockup (symbol + wordmark + slogan) on navy | tight crop of `linkedin/broadgate-linkedin-company-cover-4200x700.png` | Banner |
+| `src/assets/broadgate-symbol-alpha.png` | Gateway symbol, white/gold on transparent | `linkedin/broadgate-linkedin-company-logo-white-gold-transparent-400x400.png` (verbatim) | BrandLockup (sticky bar, footer) |
+| `src/assets/broadgate-symbol-ink.png` | Gateway symbol, navy/gold on transparent | `website/broadgate-corner-icon-256.png` (verbatim) | Introduction watermark |
+| `src/assets/broadgate-symbol.png` | Gateway symbol on navy | derived | spare |
+| `public/favicon-*.png`, `apple-touch-icon.png` | Favicons / touch icon | `icons/broadgate-icon-*` | `Base.astro` |
+| `public/favicon.ico` | Legacy favicon | generated from `icons/broadgate-icon-32x32.png` | `Base.astro` |
+| `public/og-image.png` | 1200×630 social-share card | padded from `website/broadgate-website-banner-1920x600.png` | `og:image` / Twitter card |
 
-The original brand source files live in `Brand basics/` and `Positioning copy/`.
+The current collateral is **"Your Gateway to Expertise"** with the wider "Broad" symbol
+(31 Aug 2026). To refresh: drop new files into `Brand basics/`, re-run the same crops
+into `src/assets/` and `public/`, keeping filenames identical. The original brand source
+files live in `Brand basics/` and `Positioning copy/`.
 
 Sections: Banner → Introduction → Offerings → Approach → Network → Leadership → Contact.
 The "MENU" button opens a drawer linking to each section.
