@@ -127,12 +127,12 @@ export const leadership = [
     name: "Ray Pretorius",
     role: "Director & CTAO (Chief Technical & AI Officer)",
     photo: "ray",
-    bio: "Ray has three decades leading technology-driven change across financial services — spanning merchant banking and a financial software company he helped found, scale through a management buy-out, and sell. He has served on a global executive leadership team and run commercial for a listed technology group's UK division, and knows the work from every side of the table: builder, implementer and strategic partner.",
+    bio: "A technologist first, with a Bachelor's degree in Maths and Comp Science, Ray has three decades leading technology-driven change across financial services — spanning merchant banking and a financial software company he helped found, scale through a management buy-out, and sell. He has served on a global executive leadership team as country MD and run commercial for a listed technology group's UK division, and knows the work from every side of the table: builder, implementer and strategic partner.",
   },
   {
     name: "Michelle Martin",
     role: "Director & Senior Consultant",
     photo: "michelle",
-    bio: "Michelle is a commercially driven Chartered Accountant with over 15 years of cross-border experience building, scaling and leading outsourced service businesses across the UK and South Africa. Her work spans the full range of BPO — accounting, payroll, tax and advisory — for clients from owner-managed SMEs to multinationals in private equity, banking and professional practice. She is dual-qualified ACA and CA(SA), with a Big 4 audit foundation and MLRO oversight experience across UK-regulated entities.",
+    bio: "Michelle Martin is a commercially driven Chartered Accountant with over 15 years of cross-border experience building, scaling, and leading outsourced service businesses across the UK, South Africa.\n\nHer expertise spans the full spectrum of BPO services including accounting, payroll, tax, and advisory. Her client portfolio ranges from owner-managed SMEs through to large multinational organisations, including experience across capital markets sectors: private equity, finance, banking and accountancy practices, each with distinct regulatory, reporting, and service delivery demands. Michelle has dual-qualified ACA and CA(SA) with a Big 4 audit foundation and experience with MLRO oversight across UK-regulated entities.",
   },
 ];

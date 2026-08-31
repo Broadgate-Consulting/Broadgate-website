@@ -183,7 +183,11 @@ const teamPhotos: Record<string, ImageMetadata> = {
                   <h3>{person.name}</h3>
                   <p class="person__role">{person.role}</p>
                   {person.bio ? (
-                    <p class="person__bio">{person.bio}</p>
+                    <div class="person__bio">
+                      {person.bio.split("\n\n").map((para) => (
+                        <p>{para}</p>
+                      ))}
+                    </div>
                   ) : (
                     <p class="person__bio person__bio--pending">Full profile to follow.</p>
                   )}
@@ -541,6 +545,10 @@ const teamPhotos: Record<string, ImageMetadata> = {
     width: 100%;
   }
 
+  .person__bio p + p {
+    margin-top: 0.8rem;
+  }
+
   .person__bio--pending {
     text-align: center;
     color: var(--slate);
@@ -551,25 +559,29 @@ const teamPhotos: Record<string, ImageMetadata> = {
   .contact {
     background: var(--navy);
     color: var(--white);
-    padding-block: var(--section-y);
+    padding-block: clamp(3rem, 6vw, 4.75rem);
   }
 
   .contact__inner {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: clamp(2rem, 6vw, 4rem);
+    grid-template-columns: 1fr auto;
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
+  }
+
+  .contact__inner > div:first-child {
+    max-width: 40rem;
   }
 
   .contact .eyebrow {
     color: var(--gold-soft);
     display: block;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.8rem;
   }
 
   .contact h2 {
     color: var(--white);
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
   }
 
   .contact .lede {
@@ -578,8 +590,8 @@ const teamPhotos: Record<string, ImageMetadata> = {
 
   .contact__actions {
     display: grid;
-    gap: 1rem;
-    justify-items: start;
+    gap: 0.85rem;
+    min-width: 15rem;
   }
 
   .contact__actions .btn {
@@ -590,6 +602,7 @@ const teamPhotos: Record<string, ImageMetadata> = {
   .contact__meta {
     color: color-mix(in srgb, var(--white) 66%, var(--navy));
     font-size: 0.9rem;
+    margin-top: 0.15rem;
   }
 
   @media (max-width: 900px) {
