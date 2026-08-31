@@ -183,13 +183,24 @@ const teamPhotos: Record<string, ImageMetadata> = {
                   <h3>{person.name}</h3>
                   <p class="person__role">{person.role}</p>
                   {person.bio ? (
-                    <div class="person__bio">
-                      {person.bio.split("\n\n").map((para) => (
-                        <p>{para}</p>
-                      ))}
+                    <div class="person__bioblock">
+                      <div class="person__bio" data-bio>
+                        {person.bio.split("\n\n").map((para) => (
+                          <p>{para}</p>
+                        ))}
+                      </div>
+                      <button
+                        class="person__more"
+                        type="button"
+                        data-bio-toggle
+                        aria-expanded="false"
+                        hidden
+                      >
+                        <span data-more-label>Read more</span>
+                      </button>
                     </div>
                   ) : (
-                    <p class="person__bio person__bio--pending">Full profile to follow.</p>
+                    <p class="person__bio-pending">Full profile to follow.</p>
                   )}
                 </li>
               );
@@ -484,7 +495,7 @@ const teamPhotos: Record<string, ImageMetadata> = {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    align-items: stretch;
+    align-items: start;
   }
 
   .person {
@@ -534,32 +545,101 @@ const teamPhotos: Record<string, ImageMetadata> = {
     margin-top: 0.35rem;
   }
 
-  .person__bio {
-    color: var(--slate);
-    font-size: 0.92rem;
-    line-height: 1.6;
-    text-align: left;
+  .person__bioblock {
+    width: 100%;
     margin-top: 1.1rem;
     padding-top: 1.1rem;
     border-top: 1px solid var(--line);
-    width: 100%;
+  }
+
+  .person__bio {
+    position: relative;
+    color: var(--slate);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
+    overflow: hidden;
+    max-height: 9.5rem;
+  }
+
+  .person.is-expanded .person__bio {
+    max-height: none;
   }
 
   .person__bio p + p {
-    margin-top: 0.8rem;
+    margin-top: 0.7rem;
   }
 
-  .person__bio--pending {
+  .person__bio::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2.75rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--white));
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .person.is-expanded .person__bio::after {
+    opacity: 0;
+  }
+
+  .person__more {
+    margin-top: 0.65rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--navy);
+    cursor: pointer;
+  }
+
+  .person__more::after {
+    content: "";
+    width: 0.46rem;
+    height: 0.46rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .person.is-expanded .person__more::after {
+    transform: translateY(1px) rotate(-135deg);
+  }
+
+  .person__more:hover {
+    color: var(--gold);
+  }
+
+  .person__more[hidden] {
+    display: none;
+  }
+
+  .person__bio-pending {
+    width: 100%;
+    margin-top: 1.1rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
     text-align: center;
     color: var(--slate);
     font-style: italic;
+    font-size: 0.9rem;
   }
 
   /* Contact */
   .contact {
     background: var(--navy);
     color: var(--white);
-    padding-block: clamp(3rem, 6vw, 4.75rem);
+    padding-block: clamp(2.75rem, 5.5vw, 4.25rem) clamp(1.75rem, 3vw, 2.25rem);
   }
 
   .contact__inner {
@@ -635,3 +715,36 @@ const teamPhotos: Record<string, ImageMetadata> = {
     }
   }
 </style>
+
+<script>
+  // Leadership bios: clamp to a preview height, reveal on "Read more".
+  const people = Array.from(document.querySelectorAll<HTMLElement>(".person"));
+
+  const syncToggles = () => {
+    for (const person of people) {
+      const bio = person.querySelector<HTMLElement>("[data-bio]");
+      const toggle = person.querySelector<HTMLButtonElement>("[data-bio-toggle]");
+      if (!bio || !toggle || person.classList.contains("is-expanded")) continue;
+      // scrollHeight is the full text height; clientHeight is the clamped preview
+      toggle.hidden = bio.scrollHeight - bio.clientHeight <= 4;
+    }
+  };
+
+  for (const person of people) {
+    const toggle = person.querySelector<HTMLButtonElement>("[data-bio-toggle]");
+    const label = person.querySelector<HTMLElement>("[data-more-label]");
+    if (!toggle || !label) continue;
+    toggle.addEventListener("click", () => {
+      const expanded = person.classList.toggle("is-expanded");
+      toggle.setAttribute("aria-expanded", String(expanded));
+      label.textContent = expanded ? "Read less" : "Read more";
+    });
+  }
+
+  syncToggles();
+  let raf = 0;
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(syncToggles);
+  });
+</script>

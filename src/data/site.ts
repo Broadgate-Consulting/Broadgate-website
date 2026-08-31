@@ -127,7 +127,7 @@ export const leadership = [
     name: "Ray Pretorius",
     role: "Director & CTAO (Chief Technical & AI Officer)",
     photo: "ray",
-    bio: "A technologist first, with a Bachelor's degree in Maths and Comp Science, Ray has three decades leading technology-driven change across financial services — spanning merchant banking and a financial software company he helped found, scale through a management buy-out, and sell. He has served on a global executive leadership team as country MD and run commercial for a listed technology group's UK division, and knows the work from every side of the table: builder, implementer and strategic partner.",
+    bio: "A technologist first, with a Bachelor's degree in Maths and Comp Science. Ray has three decades leading technology-driven change across financial services, spanning merchant banking and a financial software company he helped found, scale through a management buy-out, and sell. He has served on a global executive leadership team as country MD and run commercial for a listed technology group's UK division, and knows the work from every side of the table: builder, implementer and strategic partner.",
   },
   {
     name: "Michelle Martin",
