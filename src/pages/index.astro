@@ -495,6 +495,12 @@ const teamPhotos: Record<string, ImageMetadata> = {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    /* equal-height cards while all collapsed; once one is expanded, let
+       cards size to their own content so siblings don't stretch */
+    align-items: stretch;
+  }
+
+  .people.has-expanded {
     align-items: start;
   }
 
@@ -542,7 +548,10 @@ const teamPhotos: Record<string, ImageMetadata> = {
     color: var(--gold);
     font-weight: 600;
     font-size: 0.85rem;
-    margin-top: 0.35rem;
+    line-height: 1.35;
+    margin-top: 0.4rem;
+    /* reserve two lines so cards with a one-line role stay level */
+    min-height: 2.7em;
   }
 
   .person__bioblock {
@@ -718,7 +727,15 @@ const teamPhotos: Record<string, ImageMetadata> = {
 
 <script>
   // Leadership bios: clamp to a preview height, reveal on "Read more".
+  const peopleList = document.querySelector<HTMLElement>(".people");
   const people = Array.from(document.querySelectorAll<HTMLElement>(".person"));
+
+  const syncExpandedState = () => {
+    peopleList?.classList.toggle(
+      "has-expanded",
+      people.some((p) => p.classList.contains("is-expanded")),
+    );
+  };
 
   const syncToggles = () => {
     for (const person of people) {
@@ -738,6 +755,7 @@ const teamPhotos: Record<string, ImageMetadata> = {
       const expanded = person.classList.toggle("is-expanded");
       toggle.setAttribute("aria-expanded", String(expanded));
       label.textContent = expanded ? "Read less" : "Read more";
+      syncExpandedState();
     });
   }
 
