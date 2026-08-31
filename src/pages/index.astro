@@ -4,6 +4,8 @@ import Base from "../layouts/Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import Footer from "../components/Footer.astro";
 import watermark from "../assets/broadgate-symbol-ink.png";
+import rayPhoto from "../assets/team/ray.jpg";
+import michellePhoto from "../assets/team/michelle.jpg";
 import {
   site,
   intro,
@@ -14,6 +16,11 @@ import {
   networkMode,
   leadership,
 } from "../data/site";
+
+const teamPhotos: Record<string, ImageMetadata> = {
+  ray: rayPhoto,
+  michelle: michellePhoto,
+};
 ---
 
 <Base>
@@ -24,7 +31,7 @@ import {
       <Image class="hero__watermark" src={watermark} alt="" widths={[360, 560]} sizes="480px" aria-hidden="true" />
       <div class="container intro__inner">
         <p class="eyebrow">Introduction</p>
-        <h2>The Gateway to expertise in Financial Services and Operations</h2>
+        <h2>Your Gateway to expertise in Financial Services and Operations</h2>
         <p class="intro__lede">{intro}</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="#contact">Start a conversation</a>
@@ -156,17 +163,33 @@ import {
         </header>
         <ul class="people">
           {
-            leadership.map((person) => (
-              <li class="person">
-                <span class="person__initials" aria-hidden="true">
-                  {person.name.split(" ").map((n) => n[0]).join("")}
-                </span>
-                <div>
+            leadership.map((person) => {
+              const photo = person.photo ? teamPhotos[person.photo] : undefined;
+              return (
+                <li class="person">
+                  {photo ? (
+                    <Image
+                      class="person__photo"
+                      src={photo}
+                      alt={`${person.name}, ${person.role}`}
+                      widths={[160, 320]}
+                      sizes="160px"
+                    />
+                  ) : (
+                    <span class="person__photo person__photo--initials" aria-hidden="true">
+                      {person.name.split(" ").map((n) => n[0]).join("")}
+                    </span>
+                  )}
                   <h3>{person.name}</h3>
-                  <p>{person.role}</p>
-                </div>
-              </li>
-            ))
+                  <p class="person__role">{person.role}</p>
+                  {person.bio ? (
+                    <p class="person__bio">{person.bio}</p>
+                  ) : (
+                    <p class="person__bio person__bio--pending">Full profile to follow.</p>
+                  )}
+                </li>
+              );
+            })
           }
         </ul>
       </div>
@@ -457,41 +480,71 @@ import {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    align-items: stretch;
   }
 
   .person {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     align-items: center;
-    padding: 1.6rem;
+    text-align: center;
+    padding: 2rem 1.75rem;
     border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
     border-radius: var(--radius);
     background: var(--white);
+    box-shadow: var(--shadow);
   }
 
-  .person__initials {
+  .person__photo {
     flex: none;
-    width: 52px;
-    height: 52px;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    background: var(--pale-blue);
+    box-shadow: 0 0 0 1px var(--line), 0 0 0 5px var(--pale-blue);
+  }
+
+  .person__photo--initials {
     display: grid;
     place-items: center;
-    border-radius: 50%;
     background: var(--navy);
     color: var(--white);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1.4rem;
     letter-spacing: 0.04em;
   }
 
   .person h3 {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    margin-top: 1.1rem;
   }
 
-  .person p {
+  .person__role {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+  }
+
+  .person__bio {
     color: var(--slate);
-    font-size: 0.9rem;
-    margin-top: 0.2rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    text-align: left;
+    margin-top: 1.1rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+    width: 100%;
+  }
+
+  .person__bio--pending {
+    text-align: center;
+    color: var(--slate);
+    font-style: italic;
   }
 
   /* Contact */
@@ -540,9 +593,14 @@ import {
   }
 
   @media (max-width: 900px) {
-    .cards,
-    .people {
+    .cards {
       grid-template-columns: 1fr 1fr;
+    }
+
+    .people {
+      grid-template-columns: 1fr;
+      max-width: 34rem;
+      margin-inline: auto;
     }
 
     .approach__grid,

@@ -7,7 +7,7 @@ export const site = {
   city: "London",
   location: "London, United Kingdom",
   url: "https://www.broadgateconsulting.co.uk",
-  email: "hello@broadgateconsulting.co.uk",
+  email: "info@broadgateconsulting.co.uk",
   linkedin: "https://www.linkedin.com/company/broadgate-consulting",
   description:
     "Broadgate Consulting brings strategy, specialist expertise and accountable delivery together for financial-services clients — through a managed network of proven partners and senior practitioners.",
@@ -20,7 +20,7 @@ export const site = {
  *   "hidden" — remove the section and its nav entry entirely
  * Set to "full" once partner engagement and the partner list are confirmed.
  */
-export const networkMode: "full" | "teaser" | "hidden" = "teaser";
+export const networkMode: "full" | "teaser" | "hidden" = "hidden";
 
 const allNav = [
   { label: "Introduction", href: "#introduction" },
@@ -61,12 +61,12 @@ export const offerings = [
       "A managed route to the right specialist at the right time — proven firms and independent professionals, matched to the brief.",
     points: [
       "Access to specialist benches across the network",
-      "Introducer and enabler, never a reseller of headcount",
+      "Introducer and enabler of trusted partners",
       "The right expertise, without the search cost",
     ],
   },
   {
-    title: "Marketing & business development",
+    title: "Business development",
     summary:
       "Go-to-market support for partners entering or growing in the UK financial-services market.",
     points: [
@@ -120,13 +120,19 @@ export const leadership = [
   {
     name: "Ronald van Hoven",
     role: "Managing Director & Lead Consultant",
-  },
-  {
-    name: "Michelle Martin",
-    role: "Director & Senior Consultant",
+    photo: null,
+    bio: null, // full profile to follow
   },
   {
     name: "Ray Pretorius",
     role: "Director & CTAO (Chief Technical & AI Officer)",
+    photo: "ray",
+    bio: "Ray has three decades leading technology-driven change across financial services — spanning merchant banking and a financial software company he helped found, scale through a management buy-out, and sell. He has served on a global executive leadership team and run commercial for a listed technology group's UK division, and knows the work from every side of the table: builder, implementer and strategic partner.",
+  },
+  {
+    name: "Michelle Martin",
+    role: "Director & Senior Consultant",
+    photo: "michelle",
+    bio: "Michelle is a commercially driven Chartered Accountant with over 15 years of cross-border experience building, scaling and leading outsourced service businesses across the UK and South Africa. Her work spans the full range of BPO — accounting, payroll, tax and advisory — for clients from owner-managed SMEs to multinationals in private equity, banking and professional practice. She is dual-qualified ACA and CA(SA), with a Big 4 audit foundation and MLRO oversight experience across UK-regulated entities.",
   },
 ];
