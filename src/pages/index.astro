@@ -29,24 +29,26 @@ const teamPhotos: Record<string, ImageMetadata> = {
     <!-- Introduction -->
     <section class="section intro" id="introduction">
       <Image class="hero__watermark" src={watermark} alt="" widths={[360, 560]} sizes="480px" aria-hidden="true" />
-      <div class="container intro__inner">
-        <p class="eyebrow">Introduction</p>
-        <h2>Your Gateway to expertise in Financial Services and Operations</h2>
-        <p class="intro__lede">{intro}</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#contact">Start a conversation</a>
-          <a class="btn btn--ghost" href="#offerings">See how we work</a>
+      <div class="container">
+        <div class="intro__inner">
+          <p class="eyebrow">Introduction</p>
+          <h2>Your Gateway to expertise in Financial Services and Operations</h2>
+          <p class="intro__lede">{intro}</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contact">Start a conversation</a>
+            <a class="btn btn--ghost" href="#offerings">See how we work</a>
+          </div>
+          <dl class="hero__facts">
+            {
+              facts.map((f) => (
+                <div>
+                  <dt>{f.label}</dt>
+                  <dd>{f.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
         </div>
-        <dl class="hero__facts">
-          {
-            facts.map((f) => (
-              <div>
-                <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
-              </div>
-            ))
-          }
-        </dl>
       </div>
     </section>
 
@@ -58,7 +60,9 @@ const teamPhotos: Record<string, ImageMetadata> = {
           <h2>Three connected offerings, one front door</h2>
           <p class="lede">
             Broadgate is the gateway to expertise across Financial Services and
-            Operations — an introducer and enabler, never a body shop.
+            Operations. An introducer and enabler of relevant expertise,{" "}
+            <span class="nowrap">in-house</span> and within our professional network,
+            never a body shop.
           </p>
         </header>
 
@@ -278,7 +282,7 @@ const teamPhotos: Record<string, ImageMetadata> = {
 
   .intro__inner {
     position: relative;
-    max-width: 52rem;
+    max-width: 46rem;
   }
 
   .intro .eyebrow {
@@ -293,6 +297,7 @@ const teamPhotos: Record<string, ImageMetadata> = {
   .intro__lede {
     font-size: clamp(1.05rem, 1.6vw, 1.2rem);
     color: var(--slate);
+    text-wrap: balance;
   }
 
   .hero__actions {
@@ -385,6 +390,23 @@ const teamPhotos: Record<string, ImageMetadata> = {
     border: 1.5px solid var(--gold);
     border-radius: 1px;
     transform: rotate(45deg);
+  }
+
+  /* Line up the internal rows (index / title / summary / bullets) across all
+     three cards so the separator above each bullet list sits at the same height. */
+  @supports (grid-template-rows: subgrid) {
+    @media (min-width: 901px) {
+      .cards {
+        grid-template-rows: auto auto auto auto;
+        row-gap: 0;
+      }
+
+      .card {
+        display: grid;
+        grid-row: span 4;
+        grid-template-rows: subgrid;
+      }
+    }
   }
 
   /* Approach */
