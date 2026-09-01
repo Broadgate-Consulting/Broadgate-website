@@ -264,10 +264,11 @@ const teamPhotos: Record<string, ImageMetadata> = {
 
   .hero__watermark {
     position: absolute;
-    right: -6%;
+    right: -4%;
     top: 50%;
     transform: translateY(-50%);
-    width: min(40vw, 440px);
+    /* grows on wide screens so the copy always runs into it */
+    width: clamp(340px, 36vw, 640px);
     height: auto;
     opacity: 0.06;
     pointer-events: none;
@@ -281,7 +282,6 @@ const teamPhotos: Record<string, ImageMetadata> = {
 
   .intro__inner {
     position: relative;
-    max-width: 46rem;
   }
 
   .intro .eyebrow {

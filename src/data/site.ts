@@ -80,7 +80,7 @@ export const offerings = [
 export const approach = [
   {
     title: "Boutique agility, institutional governance",
-    body: "A professionally engineered supply framework — fully IR35-coherent, contractually robust and properly insured — so you get responsiveness without governance risk.",
+    body: "A professionally engineered supply framework, fully IR35-coherent, contractually robust and properly insured, so you get responsiveness without governance risk.",
   },
   {
     title: "Independent, UK-owned and UK-led",
