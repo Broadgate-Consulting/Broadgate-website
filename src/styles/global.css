@@ -126,8 +126,6 @@ p {
 .lede {
   font-size: clamp(1.1rem, 1.8vw, 1.3rem);
   color: var(--slate);
-  max-width: 60ch;
-  text-wrap: balance;
 }
 
 .nowrap {
