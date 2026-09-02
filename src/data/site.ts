@@ -9,6 +9,7 @@ export const site = {
   url: "https://www.broadgateconsulting.co.uk",
   email: "info@broadgateconsulting.co.uk",
   linkedin: "https://www.linkedin.com/company/broadgate-consulting",
+  registeredOffice: "21 Somerville Drive, Crawley, England, RH10 3TJ",
   description:
     "Broadgate Consulting brings strategy, specialist expertise and accountable delivery together for financial-services clients — through a managed network of proven partners and senior practitioners.",
 };
@@ -48,9 +49,9 @@ export const offerings = [
   {
     title: "Expert consulting",
     summary:
-      "Senior practitioners engaged directly on your priorities — finance function builds, pensions and tax transformation, and complex programme delivery.",
+      "Senior practitioners engaged directly on your priorities, inter alia, finance function builds, pensions and tax transformation, and complex programme delivery.",
     points: [
-      "Delivered by people who have done the work, not a body shop",
+      "Delivered by experts in their field, who have done the work themselves",
       "Transparent day rates",
       "Scoped to decisions, delivery, ownership and outcomes",
     ],
@@ -58,7 +59,7 @@ export const offerings = [
   {
     title: "Curated introductions & referrals",
     summary:
-      "A managed route to the right specialist at the right time — proven firms and independent professionals, matched to the brief.",
+      "A managed route to the right specialist at the right time, proven firms and independent professionals, matched to the brief.",
     points: [
       "Access to specialist benches across the network",
       "Introducer and enabler of trusted partners",
@@ -80,7 +81,7 @@ export const offerings = [
 export const approach = [
   {
     title: "Boutique agility, institutional governance",
-    body: "A professionally engineered supply framework, fully IR35-coherent, contractually robust and properly insured, so you get responsiveness without governance risk.",
+    body: "A professionally engineered supply framework, contractually robust and properly insured, so you get responsiveness without governance risk.",
   },
   {
     title: "Independent, UK-owned and UK-led",
@@ -121,7 +122,7 @@ export const leadership = [
     name: "Ronald van Hoven",
     role: "Managing Director & Lead Consultant",
     photo: "ronald",
-    bio: "A finance and operations leader, Ronald holds a BCom in Finance and has more than two decades of experience across the investment-platform and wealth-management sectors in Guernsey, South Africa and the UK. His career spans audit, finance, business analysis, operations, fund management, trading, technology and regulatory compliance. He has built investment platforms from the ground up, designed lean operating models and led the selection and implementation of critical financial and operational systems. As a Chief Operating Officer and Finance Director, he held executive accountability for Operations, IT and Finance. A pragmatic problem-solver and committed people leader, Ronald excels at connecting these disciplines, building strong control environments and turning complex ideas into resilient, high-performing businesses.",
+    bio: "As a consultant and investment-platform specialist, Ronald has more than two decades of hands-on experience across the investment-platform and wealth-management sectors in Guernsey, South Africa and the UK. He has built investment operations from the ground up, designed lean operating models and strong control environments, and selected and implemented the core financial and operational systems that run them. His deep experience comes from holding executive accountabilities for Operations, IT, and Finance. Now consulting to financial-services clients, Ronald leads finance function builds, pensions and tax transformation and complex programme delivery, bringing deep technical grounding in pensions, tax and financial-reporting regimes. He is known for leading with the conclusion: turning complex briefs into scoped, governed workstreams with clear decisions, owners and outcomes.",
   },
   {
     name: "Ray Pretorius",

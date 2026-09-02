@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import BrandLockup from "./BrandLockup.astro";
-import lockup from "../assets/broadgate-lockup.png";
 import { nav, site } from "../data/site";
 
 const triggerLabel = "Menu";
@@ -11,13 +9,7 @@ const triggerLabel = "Menu";
   <div class="container banner__inner">
     <div class="banner__row">
       <a class="banner__brand" href="#site-top" aria-label={`${site.name} — ${site.slogan}`}>
-        <Image
-          src={lockup}
-          alt={`${site.name} — ${site.slogan}`}
-          widths={[360, 560, 900]}
-          sizes="(max-width: 640px) 300px, 460px"
-          loading="eager"
-        />
+        <BrandLockup size="banner" slogan />
       </a>
       <button
         class="nav-trigger"
@@ -108,11 +100,7 @@ const triggerLabel = "Menu";
 
   .banner__brand {
     display: block;
-  }
-
-  .banner__brand img {
-    width: clamp(220px, 52vw, 500px);
-    height: auto;
+    text-decoration: none;
   }
 
   @media (max-width: 560px) {
