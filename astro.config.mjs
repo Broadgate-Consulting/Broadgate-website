@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.broadgateconsulting.co.uk',
+  site: 'https://broadgateconsulting.co.uk',
   integrations: [sitemap()],
 });

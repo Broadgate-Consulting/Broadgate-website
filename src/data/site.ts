@@ -6,7 +6,7 @@ export const site = {
   slogan: "Your Gateway to Expertise",
   city: "London",
   location: "London, United Kingdom",
-  url: "https://www.broadgateconsulting.co.uk",
+  url: "https://broadgateconsulting.co.uk",
   email: "info@broadgateconsulting.co.uk",
   linkedin: "https://www.linkedin.com/company/broadgate-consulting",
   registeredOffice: "21 Somerville Drive, Crawley, England, RH10 3TJ",
