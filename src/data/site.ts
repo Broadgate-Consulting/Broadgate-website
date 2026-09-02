@@ -49,7 +49,7 @@ export const offerings = [
   {
     title: "Expert consulting",
     summary:
-      "Senior practitioners engaged directly on your priorities, inter alia, finance function builds, pensions and tax transformation, and complex programme delivery.",
+      "Senior practitioners engaged directly on your priorities, including finance function builds, pensions and tax transformation, technology platforming and complex programme delivery.",
     points: [
       "Delivered by experts in their field, who have done the work themselves",
       "Transparent day rates",
