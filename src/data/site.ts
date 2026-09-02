@@ -120,8 +120,8 @@ export const leadership = [
   {
     name: "Ronald van Hoven",
     role: "Managing Director & Lead Consultant",
-    photo: null,
-    bio: null, // full profile to follow
+    photo: "ronald",
+    bio: "A finance and operations leader, Ronald holds a BCom in Finance and has more than two decades of experience across the investment-platform and wealth-management sectors in Guernsey, South Africa and the UK. His career spans audit, finance, business analysis, operations, fund management, trading, technology and regulatory compliance. He has built investment platforms from the ground up, designed lean operating models and led the selection and implementation of critical financial and operational systems. As a Chief Operating Officer and Finance Director, he held executive accountability for Operations, IT and Finance. A pragmatic problem-solver and committed people leader, Ronald excels at connecting these disciplines, building strong control environments and turning complex ideas into resilient, high-performing businesses.",
   },
   {
     name: "Ray Pretorius",
