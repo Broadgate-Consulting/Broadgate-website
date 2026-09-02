@@ -45,7 +45,7 @@ Taken straight from the official brand files in `Brand basics/` — no redrawn o
 
 | File | What | Source in `Brand basics/` | Used by |
 | ---- | ---- | ------------------------- | ------- |
-| `src/assets/broadgate-lockup.png` | Full lockup (symbol + wordmark + slogan) on navy | tight crop of `linkedin/broadgate-linkedin-company-cover-4200x700.png` | Banner |
+| `src/assets/broadgate-lockup.png` | Full lockup (symbol + wordmark + slogan) on navy | tight crop of `linkedin/broadgate-linkedin-company-cover-4200x700-consulting-bold-centred.png` | Banner |
 | `src/assets/broadgate-symbol-alpha.png` | Gateway symbol, white/gold on transparent | `linkedin/broadgate-linkedin-company-logo-white-gold-transparent-400x400.png` (verbatim) | BrandLockup (sticky bar, footer) |
 | `src/assets/broadgate-symbol-ink.png` | Gateway symbol, navy/gold on transparent | `website/broadgate-corner-icon-256.png` (verbatim) | Introduction watermark |
 | `src/assets/broadgate-symbol.png` | Gateway symbol on navy | derived | spare |
